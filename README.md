@@ -7,7 +7,7 @@
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=nextdotjs)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
+[Live Demo](https://nordai-beta.vercel.app) · [API Docs](https://rahulsr2806-nordai-backend.hf.space/docs) · [Report Bug](https://github.com/Rahul-2806/nordai/issues)
 **A full-stack, AI-powered European electricity market intelligence platform built for professional energy traders.**
 
 *Real-time ENTSO-E prices · ML forecasting · LLM Co-Pilot · Cross-border arbitrage detection · Market regime classification*

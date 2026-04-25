@@ -1,8 +1,7 @@
 'use client'
 import { MarketSummary } from '@/lib/types'
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 
-// Simulated gas prices correlated with power (realistic EU gas prices in EUR/MWh thermal equivalent)
 function generateGasCorrelation(markets: MarketSummary[]) {
   const dePrice = markets.find(m => m.code === 'DE')?.current_price || 87
   const data = []
@@ -55,7 +54,7 @@ export default function CrossCommodity({ markets }: { markets: MarketSummary[] }
             <YAxis tick={{ fontSize: 9, fill: 'var(--ink4)', fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} width={35} />
             <Tooltip
               contentStyle={{ background: 'var(--ink)', border: '1px solid var(--ink3)', borderRadius: 6, fontSize: 11, color: 'var(--cream)', fontFamily: 'JetBrains Mono' }}
-              formatter={(v: any, n: string) => [`€${Number(v).toFixed(1)}`, n === 'power' ? 'Power' : 'Gas']}
+              formatter={(v: any) => [`€${Number(v).toFixed(1)}`]}
             />
             <Line type="monotone" dataKey="power" stroke="var(--gold)" strokeWidth={2} dot={false} />
             <Line type="monotone" dataKey="gas"   stroke="var(--blue)" strokeWidth={2} dot={false} strokeDasharray="4 4" />

@@ -115,7 +115,7 @@ export default function ForecastPage({ markets }: { markets: MarketSummary[] }) 
               <YAxis tick={{ fontSize: 10, fill: 'var(--ink4)', fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} width={45} />
               <Tooltip
                 contentStyle={{ background: 'var(--ink)', border: '1px solid var(--ink3)', borderRadius: 6, fontSize: 11, color: 'var(--cream)', fontFamily: 'JetBrains Mono' }}
-                formatter={(v: any, n: string) => [`€${Number(v).toFixed(1)}`, n]}
+                formatter={(v: any) => [`€${Number(v).toFixed(1)}`]}
               />
               <Area type="monotone" dataKey="upper" stroke="none" fill="url(#bandGrad)" strokeWidth={0} />
               <Area type="monotone" dataKey="lower" stroke="none" fill="var(--cream)" strokeWidth={0} />

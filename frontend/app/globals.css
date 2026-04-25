@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream:   #f5f0e8;
+  --cream2:  #ede6d8;
+  --cream3:  #e0d5c0;
+  --cream4:  #d4c9b0;
+  --ink:     #1a1510;
+  --ink2:    #3d3528;
+  --ink3:    #6b5e4a;
+  --ink4:    #9c8e7a;
+  --gold:    #c8952a;
+  --gold2:   #e8b84b;
+  --gold3:   #f5d07a;
+  --gold4:   #fdf0c8;
+  --red:     #c44032;
+  --green:   #2d6e4e;
+  --green2:  #3d9e6e;
+  --blue:    #2a4a7a;
+  --rose:    #c05060;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--cream2); }
+::-webkit-scrollbar-thumb { background: var(--cream4); border-radius: 2px; }
+
+/* Typography */
+.font-serif  { font-family: 'Playfair Display', serif; }
+.font-mono   { font-family: 'JetBrains Mono', monospace; }
+.font-sans   { font-family: 'Syne', sans-serif; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes bar-grow {
+  from { width: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes number-flash {
+  0%, 100% { color: inherit; }
+  50%       { color: var(--gold2); }
+}
+
+.animate-fade-up   { animation: fadeUp 0.5s ease forwards; }
+.animate-pulse-dot { animation: pulse-dot 1.2s ease-in-out infinite; }
+.animate-bar-grow  { animation: bar-grow 0.8s ease-out forwards; }
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(90deg, var(--cream2) 25%, var(--cream3) 50%, var(--cream2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 4px;
+}
+
+/* Section label */
+.section-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cream3);
+}
+
+/* Cards */
+.card {
+  background: var(--cream);
+  border: 1px solid var(--cream3);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+/* Signal badge */
+.badge-buy  { background: #e8f5ee; color: var(--green);  }
+.badge-sell { background: #fdf0f0; color: var(--rose);   }
+.badge-hold { background: var(--cream2); color: var(--ink3); }
+
+/* Price number */
+.price-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--ink);
+}
+
+/* Confidence bar */
+.conf-track { height: 2px; background: var(--cream3); border-radius: 1px; margin-top: 6px; }
+.conf-fill  { height: 2px; border-radius: 1px; transition: width 1s ease; }
+
+/* Scrollable panel */
+.scroll-y {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cream4) var(--cream2);
+}

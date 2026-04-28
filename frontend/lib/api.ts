@@ -43,11 +43,25 @@ export async function getSentiment() {
   return r.data
 }
 
-export async function chatWithCopilot(message: string, history: {role:string;content:string}[] = []) {
+// ── Agentic Co-Pilot (v2) — persistent memory + tool use ─────────────
+export async function chatWithCopilot(
+  message: string,
+  session_id?: string | null,
+) {
   const r = await api.post('/api/copilot/chat', {
     message,
-    conversation_history: history,
+    session_id: session_id || null,
   })
+  return r.data as {
+    reply: string
+    session_id: string
+    tool_used: string | null
+    sources: string[]
+  }
+}
+
+export async function clearCopilotSession(session_id: string) {
+  const r = await api.delete(`/api/copilot/session/${session_id}`)
   return r.data
 }
 

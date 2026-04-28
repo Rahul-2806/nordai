@@ -2,7 +2,7 @@
 title: NordAI Backend
 emoji: ⚡
 colorFrom: yellow
-colorTo: orange
+colorTo: red
 sdk: docker
 pinned: false
 ---

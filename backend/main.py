@@ -6,19 +6,25 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from routers import market, forecast, signals, arbitrage, regime, scenario, copilot, alerts, briefing, backtest, sentiment
+from services.alert_agent import start_scheduler
 
+_scheduler = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("NordAI backend starting...")
+    global _scheduler
+    print("NordAI v2 backend starting...")
+    _scheduler = start_scheduler(app)
     yield
+    if _scheduler:
+        _scheduler.shutdown()
     print("NordAI backend shutting down...")
 
 
 app = FastAPI(
     title="NordAI API",
-    description="European Electricity Trading Intelligence Platform",
-    version="1.0.0",
+    description="European Electricity Trading Intelligence Platform v2 — Agentic Co-Pilot",
+    version="2.0.0",
     lifespan=lifespan,
 )
 
@@ -45,8 +51,12 @@ app.include_router(sentiment.router, prefix="/api/sentiment", tags=["News Sentim
 
 @app.get("/")
 def root():
-    return {"status": "online", "platform": "NordAI", "version": "1.0.0"}
-
+    return {
+        "status":   "online",
+        "platform": "NordAI",
+        "version":  "2.0.0",
+        "features": ["agentic-copilot", "persistent-memory", "tool-use", "proactive-alerts"],
+    }
 
 @app.get("/health")
 def health():
